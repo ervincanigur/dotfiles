@@ -6,9 +6,10 @@
 # https://www.chezmoi.io/
 # https://github.com/tmux-plugins/tpm
 # https://github.com/junegunn/fzf
+# https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
 
 # This script is used to setup ervin's env
-# Assumes you have tmux, zsh, neovim and fzf installed
+# Assumes you have tmux, zsh and neovim installed
 
 # Install pyenv
 curl https://pyenv.run | bash
