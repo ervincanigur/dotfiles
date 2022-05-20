@@ -1,0 +1,83 @@
+# Zplug
+source ~/.zplug/init.zsh
+zplug "mattberther/zsh-pyenv"
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplug "mafredri/zsh-async", from:"github", use:"async.zsh"
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+if ! zplug check --verbose; then
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
+  zplug clean
+fi
+zplug load
+
+autoload -U promptinit; promptinit
+prompt pure
+PURE_CMD_MAX_EXEC_TIME=10
+
+# Aliases
+# cd
+alias ..="cd .."
+
+# better output
+alias ..="cd .."
+alias ...="cd ../../"
+alias rm="rm -v"
+alias rmrf="rm -vfr"
+alias h='history'
+alias hh='history | grep'
+alias l='ls -lathF'             # long, sort by newest to oldest
+alias cp='cp -iv'                           # Preferred 'cp' implementation
+alias mv='mv -iv'                           # Preferred 'mv' implementation
+alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
+alias less='less -FSRXc'                    # Preferred 'less' implementation
+alias wget='wget -c'                        # Preferred 'wget' implementation (resume download)
+alias tailf='tail -f'
+alias vc='code .'
+alias scp="scp -r -p -C"
+
+# ls
+alias ll="ls -AlhG"
+
+# Poetry
+alias pa="poetry add"
+alias pu="poetry update"
+alias pal="poetry add --lock"
+
+# Git
+alias gd="git diff"
+alias ga="git add -p"
+alias gpu="git push"
+alias gp="git pull"
+alias gpf="git pull --all --prune"
+alias gr="git restore"
+alias gca="git commit --amend"
+alias gc="git commit"
+alias gch="git checkout"
+alias gcb="git checkout -b"
+alias gf="git fetch --all --prune"
+alias gst="git status"
+
+alias vi="nvim"
+alias v="nvim"
+alias vim="nvim"
+
+# Other important exports
+export CLICOLOR=1
+export DOCKER_BUILDKIT=1
+export HOMEBREW_NO_ENV_HINTS=1
+
+# Pyenv stuff
+export PYENV_ROOT=$HOME/.pyenv
+export PATH=$PYENV_ROOT/shims:$PATH
+export PATH=$PYENV_ROOT/bin:$PATH
+export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
+
+export LANG=en_US.UTF-8
+export EDITOR=nvim
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
