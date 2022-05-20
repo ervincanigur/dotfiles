@@ -1,4 +1,4 @@
-#1/bin/sh
+#!/bin/sh -ex
 
 # App links
 # https://github.com/sindresorhus/pure
@@ -16,10 +16,8 @@ curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/instal
 # Install zsh auto completion
 git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ~/.zsh
 
-
 # Install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
 
 # Install chezmoi
 sh -c "$(curl -fsLS chezmoi.io/get)"
@@ -28,6 +26,10 @@ sh -c "$(curl -fsLS chezmoi.io/get)"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Install dotfiles
-chezmoi init --apply https://github.com/ervincanigur/dotfiles.git
+~/bin/chezmoi init --apply https://github.com/ervincanigur/dotfiles.git
+
+chsh -s $(which zsh)
+
+~/.fzf/install
 
 echo "Done"
