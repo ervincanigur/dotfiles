@@ -10,6 +10,9 @@
 # This script is used to setup ervin's env
 # Assumes you have tmux, zsh, neovim and fzf installed
 
+# Install pyenv
+curl https://pyenv.run | bash
+
 # Install zplug
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh
 
