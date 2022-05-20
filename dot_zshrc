@@ -4,9 +4,11 @@ export PATH=$PYENV_ROOT/shims:$PATH
 export PATH=$PYENV_ROOT/bin:$PATH
 export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
-source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Zplug
 source ~/.zplug/init.zsh
@@ -85,20 +87,7 @@ export EDITOR=nvim
 
 
 ssh() {
-  # Note: Options without parameter were hardcoded,
-  # in order to distinguish an option's parameter from the destination.
-  #
-  #                   s/[[:space:]]*\(\( | spaces before options
-  #     \(-[46AaCfGgKkMNnqsTtVvXxYy]\)\| | option without parameter
-  #                     \(-[^[:space:]]* | option
-  # \([[:space:]]\+[^[:space:]]*\)\?\)\) | parameter
-  #                      [[:space:]]*\)* | spaces between options
-  #                        [[:space:]]\+ | spaces before destination
-  #                \([^-][^[:space:]]*\) | destination
-  #                                   .* | command
-  #                                 /\6/ | replace with destination
-  tmux rename-window "$(echo "$@" \
-    | sed 's/[[:space:]]*\(\(\(-[46AaCfGgKkMNnqsTtVvXxYy]\)\|\(-[^[:space:]]*\([[:space:]]\+[^[:space:]]*\)\?\)\)[[:space:]]*\)*[[:space:]]\+\([^-][^[:space:]]*\).*/\6/')"
+  tmux rename-window "$(echo $* | rev | cut -d ' ' -f1 | rev | cut -d . -f 1)"
   command ssh "$@"
   tmux set-window-option automatic-rename "on" 1> /dev/null
 }

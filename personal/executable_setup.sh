@@ -16,8 +16,8 @@ curl https://pyenv.run | bash
 # Install zplug
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh
 
-# Install zsh auto completion
-git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ~/.zsh
+# ZSH Auto suggessions
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
 # Install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
