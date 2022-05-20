@@ -13,6 +13,10 @@
 # Install zplug
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh
 
+# Install zsh auto completion
+git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ~/.zsh
+
+
 # Install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install

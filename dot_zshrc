@@ -1,4 +1,7 @@
 # Zplug
+
+source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
 source ~/.zplug/init.zsh
 zplug "mattberther/zsh-pyenv"
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
