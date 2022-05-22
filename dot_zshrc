@@ -86,10 +86,4 @@ export LANG=en_US.UTF-8
 export EDITOR=nvim
 
 
-ssh() {
-  tmux rename-window "$(echo $* | rev | cut -d ' ' -f1 | rev | cut -d . -f 1)"
-  command ssh "$@"
-  tmux set-window-option automatic-rename "on" 1> /dev/null
-}
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
