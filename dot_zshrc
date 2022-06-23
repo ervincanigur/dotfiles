@@ -6,6 +6,7 @@ export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
 
 if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
+    export PATH="$PATH:/Users/ervincanigur/Library/Application Support/multipass/bin"
 fi
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -18,6 +19,7 @@ zplug "mafredri/zsh-async", from:"github", use:"async.zsh"
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug 'ryutok/rust-zsh-completions'
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
   if read -q; then
@@ -77,6 +79,11 @@ alias gst="git status"
 alias vi="nvim"
 alias v="nvim"
 alias vim="nvim"
+
+alias t="tmux"
+alias ta"tmux a"
+
+alias mp="multipass"
 
 # Other important exports
 export CLICOLOR=1
