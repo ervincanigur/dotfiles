@@ -13,6 +13,8 @@
 
 # Check if ubuntu/debian based
 if [ -f /etc/debian_version ]; then
+    # ask for sudo
+    sudo -v
     # Install dependencies
     sudo apt-get update
     sudo apt-get install -y \
@@ -24,7 +26,7 @@ if [ -f /etc/debian_version ]; then
 curl https://pyenv.run | bash
 
 # Install zplug
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 
 # ZSH Auto suggessions
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
