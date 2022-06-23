@@ -11,6 +11,15 @@
 # This script is used to setup ervin's env
 # Assumes you have tmux, zsh and neovim installed
 
+# Check if ubuntu/debian based
+if [ -f /etc/debian_version ]; then
+    # Install dependencies
+    sudo apt-get update
+    sudo apt-get install -y \
+        zsh \
+        tmux \
+        neovim
+
 # Install pyenv
 curl https://pyenv.run | bash
 
