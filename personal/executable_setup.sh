@@ -21,6 +21,7 @@ if [ -f /etc/debian_version ]; then
         zsh \
         tmux \
         neovim
+fi
 
 # Install pyenv
 curl https://pyenv.run | bash
